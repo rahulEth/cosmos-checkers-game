@@ -3,74 +3,29 @@ package keeper_test
 import (
 	"testing"
 
-	"github.com/cosmos/cosmos-sdk/types/query"
-	"github.com/alice/checkers"
+	"cosmossdk.io/collections"
 	"github.com/stretchr/testify/require"
+	"github.com/alice/checkers"
 )
 
-func TestQueryParams(t *testing.T) {
+func TestGetGame(t *testing.T) {
 	f := initFixture(t)
 	require := require.New(t)
 
-	resp, err := f.queryServer.Params(f.ctx, &checkers.QueryParamsRequest{})
+	resp, err := f.queryServer.GetGame(f.ctx, &checkers.QueryGetGameRequest{Index: "id1"})
 	require.NoError(err)
-	require.Equal(checkers.Params{}, resp.Params)
-}
+	require.Equal((*checkers.StoredGame)(nil), resp.Game)
+	require.Error(collections.ErrNotFound, err)
 
-func TestQueryCounter(t *testing.T) {
-	f := initFixture(t)
-	require := require.New(t)
-
-	resp, err := f.queryServer.Counter(f.ctx, &checkers.QueryCounterRequest{Address: f.addrs[0].String()})
-	require.NoError(err)
-	require.Equal(uint64(0), resp.Counter)
-
-	_, err = f.msgServer.IncrementCounter(f.ctx, &checkers.MsgIncrementCounter{Sender: f.addrs[0].String()})
+	_, err = f.msgServer.CheckersCreateGm(f.ctx, &checkers.ReqCheckersTorram{
+		Creator: f.addrs[0].String(),
+		Index:   "id1",
+		Black:   f.addrs[1].String(),
+		Red:     f.addrs[2].String(),
+	})
 	require.NoError(err)
 
-	resp, err = f.queryServer.Counter(f.ctx, &checkers.QueryCounterRequest{Address: f.addrs[0].String()})
+	resp, err = f.queryServer.GetGame(f.ctx, &checkers.QueryGetGameRequest{Index: "id1"})
 	require.NoError(err)
-	require.Equal(uint64(1), resp.Counter)
-}
-
-func TestQueryCounters(t *testing.T) {
-	f := initFixture(t)
-	require := require.New(t)
-
-	resp, err := f.queryServer.Counters(f.ctx, &checkers.QueryCountersRequest{})
-	require.NoError(err)
-	require.Equal(0, len(resp.Counters))
-
-	_, err = f.msgServer.IncrementCounter(f.ctx, &checkers.MsgIncrementCounter{Sender: f.addrs[0].String()})
-	require.NoError(err)
-
-	resp, err = f.queryServer.Counters(f.ctx, &checkers.QueryCountersRequest{})
-	require.NoError(err)
-	require.Equal(1, len(resp.Counters))
-	require.Equal(uint64(1), resp.Counters[0].Count)
-	require.Equal(f.addrs[0].String(), resp.Counters[0].Address)
-}
-
-func TestQueryCountersPaginated(t *testing.T) {
-	f := initFixture(t)
-	require := require.New(t)
-
-	resp, err := f.queryServer.Counters(f.ctx, &checkers.QueryCountersRequest{Pagination: &query.PageRequest{Limit: 1}})
-	require.NoError(err)
-	require.Equal(0, len(resp.Counters))
-
-	_, err = f.msgServer.IncrementCounter(f.ctx, &checkers.MsgIncrementCounter{Sender: f.addrs[0].String()})
-	require.NoError(err)
-	_, err = f.msgServer.IncrementCounter(f.ctx, &checkers.MsgIncrementCounter{Sender: f.addrs[1].String()})
-	require.NoError(err)
-
-	resp, err = f.queryServer.Counters(f.ctx, &checkers.QueryCountersRequest{Pagination: &query.PageRequest{Limit: 1}})
-	require.NoError(err)
-	require.Equal(1, len(resp.Counters))
-	require.Equal(uint64(1), resp.Counters[0].Count)
-	require.Equal(f.addrs[1].String(), resp.Counters[0].Address)
-
-	resp, err = f.queryServer.Counters(f.ctx, &checkers.QueryCountersRequest{})
-	require.NoError(err)
-	require.Equal(2, len(resp.Counters))
+	require.NotEqual(int64(0), resp.Game.StartTime)
 }

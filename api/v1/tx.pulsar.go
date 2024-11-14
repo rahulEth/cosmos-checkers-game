@@ -6,7 +6,6 @@ import (
 	_ "github.com/cosmos/cosmos-proto"
 	runtime "github.com/cosmos/cosmos-proto/runtime"
 	_ "github.com/cosmos/cosmos-sdk/types/msgservice"
-	_ "github.com/cosmos/cosmos-sdk/types/tx/amino"
 	_ "github.com/cosmos/gogoproto/gogoproto"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoiface "google.golang.org/protobuf/runtime/protoiface"
@@ -17,25 +16,31 @@ import (
 )
 
 var (
-	md_MsgIncrementCounter        protoreflect.MessageDescriptor
-	fd_MsgIncrementCounter_sender protoreflect.FieldDescriptor
+	md_ReqCheckersTorram         protoreflect.MessageDescriptor
+	fd_ReqCheckersTorram_creator protoreflect.FieldDescriptor
+	fd_ReqCheckersTorram_index   protoreflect.FieldDescriptor
+	fd_ReqCheckersTorram_black   protoreflect.FieldDescriptor
+	fd_ReqCheckersTorram_red     protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_alice_checkers_v1_tx_proto_init()
-	md_MsgIncrementCounter = File_alice_checkers_v1_tx_proto.Messages().ByName("MsgIncrementCounter")
-	fd_MsgIncrementCounter_sender = md_MsgIncrementCounter.Fields().ByName("sender")
+	md_ReqCheckersTorram = File_alice_checkers_v1_tx_proto.Messages().ByName("ReqCheckersTorram")
+	fd_ReqCheckersTorram_creator = md_ReqCheckersTorram.Fields().ByName("creator")
+	fd_ReqCheckersTorram_index = md_ReqCheckersTorram.Fields().ByName("index")
+	fd_ReqCheckersTorram_black = md_ReqCheckersTorram.Fields().ByName("black")
+	fd_ReqCheckersTorram_red = md_ReqCheckersTorram.Fields().ByName("red")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgIncrementCounter)(nil)
+var _ protoreflect.Message = (*fastReflection_ReqCheckersTorram)(nil)
 
-type fastReflection_MsgIncrementCounter MsgIncrementCounter
+type fastReflection_ReqCheckersTorram ReqCheckersTorram
 
-func (x *MsgIncrementCounter) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounter)(x)
+func (x *ReqCheckersTorram) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_ReqCheckersTorram)(x)
 }
 
-func (x *MsgIncrementCounter) slowProtoReflect() protoreflect.Message {
+func (x *ReqCheckersTorram) slowProtoReflect() protoreflect.Message {
 	mi := &file_alice_checkers_v1_tx_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -47,43 +52,43 @@ func (x *MsgIncrementCounter) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgIncrementCounter_messageType fastReflection_MsgIncrementCounter_messageType
-var _ protoreflect.MessageType = fastReflection_MsgIncrementCounter_messageType{}
+var _fastReflection_ReqCheckersTorram_messageType fastReflection_ReqCheckersTorram_messageType
+var _ protoreflect.MessageType = fastReflection_ReqCheckersTorram_messageType{}
 
-type fastReflection_MsgIncrementCounter_messageType struct{}
+type fastReflection_ReqCheckersTorram_messageType struct{}
 
-func (x fastReflection_MsgIncrementCounter_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounter)(nil)
+func (x fastReflection_ReqCheckersTorram_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_ReqCheckersTorram)(nil)
 }
-func (x fastReflection_MsgIncrementCounter_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounter)
+func (x fastReflection_ReqCheckersTorram_messageType) New() protoreflect.Message {
+	return new(fastReflection_ReqCheckersTorram)
 }
-func (x fastReflection_MsgIncrementCounter_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounter
+func (x fastReflection_ReqCheckersTorram_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_ReqCheckersTorram
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgIncrementCounter) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounter
+func (x *fastReflection_ReqCheckersTorram) Descriptor() protoreflect.MessageDescriptor {
+	return md_ReqCheckersTorram
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgIncrementCounter) Type() protoreflect.MessageType {
-	return _fastReflection_MsgIncrementCounter_messageType
+func (x *fastReflection_ReqCheckersTorram) Type() protoreflect.MessageType {
+	return _fastReflection_ReqCheckersTorram_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgIncrementCounter) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounter)
+func (x *fastReflection_ReqCheckersTorram) New() protoreflect.Message {
+	return new(fastReflection_ReqCheckersTorram)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgIncrementCounter) Interface() protoreflect.ProtoMessage {
-	return (*MsgIncrementCounter)(x)
+func (x *fastReflection_ReqCheckersTorram) Interface() protoreflect.ProtoMessage {
+	return (*ReqCheckersTorram)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -91,10 +96,28 @@ func (x *fastReflection_MsgIncrementCounter) Interface() protoreflect.ProtoMessa
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgIncrementCounter) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Sender != "" {
-		value := protoreflect.ValueOfString(x.Sender)
-		if !f(fd_MsgIncrementCounter_sender, value) {
+func (x *fastReflection_ReqCheckersTorram) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Creator != "" {
+		value := protoreflect.ValueOfString(x.Creator)
+		if !f(fd_ReqCheckersTorram_creator, value) {
+			return
+		}
+	}
+	if x.Index != "" {
+		value := protoreflect.ValueOfString(x.Index)
+		if !f(fd_ReqCheckersTorram_index, value) {
+			return
+		}
+	}
+	if x.Black != "" {
+		value := protoreflect.ValueOfString(x.Black)
+		if !f(fd_ReqCheckersTorram_black, value) {
+			return
+		}
+	}
+	if x.Red != "" {
+		value := protoreflect.ValueOfString(x.Red)
+		if !f(fd_ReqCheckersTorram_red, value) {
 			return
 		}
 	}
@@ -111,15 +134,21 @@ func (x *fastReflection_MsgIncrementCounter) Range(f func(protoreflect.FieldDesc
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgIncrementCounter) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_ReqCheckersTorram) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgIncrementCounter.sender":
-		return x.Sender != ""
+	case "alice.checkers.v1.ReqCheckersTorram.creator":
+		return x.Creator != ""
+	case "alice.checkers.v1.ReqCheckersTorram.index":
+		return x.Index != ""
+	case "alice.checkers.v1.ReqCheckersTorram.black":
+		return x.Black != ""
+	case "alice.checkers.v1.ReqCheckersTorram.red":
+		return x.Red != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -129,15 +158,21 @@ func (x *fastReflection_MsgIncrementCounter) Has(fd protoreflect.FieldDescriptor
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_ReqCheckersTorram) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgIncrementCounter.sender":
-		x.Sender = ""
+	case "alice.checkers.v1.ReqCheckersTorram.creator":
+		x.Creator = ""
+	case "alice.checkers.v1.ReqCheckersTorram.index":
+		x.Index = ""
+	case "alice.checkers.v1.ReqCheckersTorram.black":
+		x.Black = ""
+	case "alice.checkers.v1.ReqCheckersTorram.red":
+		x.Red = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -147,16 +182,25 @@ func (x *fastReflection_MsgIncrementCounter) Clear(fd protoreflect.FieldDescript
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgIncrementCounter) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ReqCheckersTorram) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "alice.checkers.v1.MsgIncrementCounter.sender":
-		value := x.Sender
+	case "alice.checkers.v1.ReqCheckersTorram.creator":
+		value := x.Creator
+		return protoreflect.ValueOfString(value)
+	case "alice.checkers.v1.ReqCheckersTorram.index":
+		value := x.Index
+		return protoreflect.ValueOfString(value)
+	case "alice.checkers.v1.ReqCheckersTorram.black":
+		value := x.Black
+		return protoreflect.ValueOfString(value)
+	case "alice.checkers.v1.ReqCheckersTorram.red":
+		value := x.Red
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounter does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorram does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -170,15 +214,21 @@ func (x *fastReflection_MsgIncrementCounter) Get(descriptor protoreflect.FieldDe
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_ReqCheckersTorram) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgIncrementCounter.sender":
-		x.Sender = value.Interface().(string)
+	case "alice.checkers.v1.ReqCheckersTorram.creator":
+		x.Creator = value.Interface().(string)
+	case "alice.checkers.v1.ReqCheckersTorram.index":
+		x.Index = value.Interface().(string)
+	case "alice.checkers.v1.ReqCheckersTorram.black":
+		x.Black = value.Interface().(string)
+	case "alice.checkers.v1.ReqCheckersTorram.red":
+		x.Red = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -192,40 +242,52 @@ func (x *fastReflection_MsgIncrementCounter) Set(fd protoreflect.FieldDescriptor
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ReqCheckersTorram) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgIncrementCounter.sender":
-		panic(fmt.Errorf("field sender of message alice.checkers.v1.MsgIncrementCounter is not mutable"))
+	case "alice.checkers.v1.ReqCheckersTorram.creator":
+		panic(fmt.Errorf("field creator of message alice.checkers.v1.ReqCheckersTorram is not mutable"))
+	case "alice.checkers.v1.ReqCheckersTorram.index":
+		panic(fmt.Errorf("field index of message alice.checkers.v1.ReqCheckersTorram is not mutable"))
+	case "alice.checkers.v1.ReqCheckersTorram.black":
+		panic(fmt.Errorf("field black of message alice.checkers.v1.ReqCheckersTorram is not mutable"))
+	case "alice.checkers.v1.ReqCheckersTorram.red":
+		panic(fmt.Errorf("field red of message alice.checkers.v1.ReqCheckersTorram is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgIncrementCounter) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ReqCheckersTorram) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgIncrementCounter.sender":
+	case "alice.checkers.v1.ReqCheckersTorram.creator":
+		return protoreflect.ValueOfString("")
+	case "alice.checkers.v1.ReqCheckersTorram.index":
+		return protoreflect.ValueOfString("")
+	case "alice.checkers.v1.ReqCheckersTorram.black":
+		return protoreflect.ValueOfString("")
+	case "alice.checkers.v1.ReqCheckersTorram.red":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgIncrementCounter) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_ReqCheckersTorram) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.MsgIncrementCounter", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.ReqCheckersTorram", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -233,7 +295,7 @@ func (x *fastReflection_MsgIncrementCounter) WhichOneof(d protoreflect.OneofDesc
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgIncrementCounter) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_ReqCheckersTorram) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -244,7 +306,7 @@ func (x *fastReflection_MsgIncrementCounter) GetUnknown() protoreflect.RawFields
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_ReqCheckersTorram) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -256,7 +318,7 @@ func (x *fastReflection_MsgIncrementCounter) SetUnknown(fields protoreflect.RawF
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgIncrementCounter) IsValid() bool {
+func (x *fastReflection_ReqCheckersTorram) IsValid() bool {
 	return x != nil
 }
 
@@ -266,9 +328,9 @@ func (x *fastReflection_MsgIncrementCounter) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_ReqCheckersTorram) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgIncrementCounter)
+		x := input.Message.Interface().(*ReqCheckersTorram)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -280,7 +342,19 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 		var n int
 		var l int
 		_ = l
-		l = len(x.Sender)
+		l = len(x.Creator)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Index)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Black)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.Red)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -294,7 +368,7 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounter)
+		x := input.Message.Interface().(*ReqCheckersTorram)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -313,10 +387,31 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.Sender) > 0 {
-			i -= len(x.Sender)
-			copy(dAtA[i:], x.Sender)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Sender)))
+		if len(x.Red) > 0 {
+			i -= len(x.Red)
+			copy(dAtA[i:], x.Red)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Red)))
+			i--
+			dAtA[i] = 0x22
+		}
+		if len(x.Black) > 0 {
+			i -= len(x.Black)
+			copy(dAtA[i:], x.Black)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Black)))
+			i--
+			dAtA[i] = 0x1a
+		}
+		if len(x.Index) > 0 {
+			i -= len(x.Index)
+			copy(dAtA[i:], x.Index)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Index)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.Creator) > 0 {
+			i -= len(x.Creator)
+			copy(dAtA[i:], x.Creator)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Creator)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -331,7 +426,7 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounter)
+		x := input.Message.Interface().(*ReqCheckersTorram)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -363,15 +458,15 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounter: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ReqCheckersTorram: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounter: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ReqCheckersTorram: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -399,7 +494,103 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Sender = string(dAtA[iNdEx:postIndex])
+				x.Creator = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Index = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 3:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Black", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Black = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 4:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Red", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.Red = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -437,23 +628,23 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 }
 
 var (
-	md_MsgIncrementCounterResponse protoreflect.MessageDescriptor
+	md_ResCheckersTorram protoreflect.MessageDescriptor
 )
 
 func init() {
 	file_alice_checkers_v1_tx_proto_init()
-	md_MsgIncrementCounterResponse = File_alice_checkers_v1_tx_proto.Messages().ByName("MsgIncrementCounterResponse")
+	md_ResCheckersTorram = File_alice_checkers_v1_tx_proto.Messages().ByName("ResCheckersTorram")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgIncrementCounterResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_ResCheckersTorram)(nil)
 
-type fastReflection_MsgIncrementCounterResponse MsgIncrementCounterResponse
+type fastReflection_ResCheckersTorram ResCheckersTorram
 
-func (x *MsgIncrementCounterResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounterResponse)(x)
+func (x *ResCheckersTorram) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_ResCheckersTorram)(x)
 }
 
-func (x *MsgIncrementCounterResponse) slowProtoReflect() protoreflect.Message {
+func (x *ResCheckersTorram) slowProtoReflect() protoreflect.Message {
 	mi := &file_alice_checkers_v1_tx_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -465,43 +656,43 @@ func (x *MsgIncrementCounterResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgIncrementCounterResponse_messageType fastReflection_MsgIncrementCounterResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgIncrementCounterResponse_messageType{}
+var _fastReflection_ResCheckersTorram_messageType fastReflection_ResCheckersTorram_messageType
+var _ protoreflect.MessageType = fastReflection_ResCheckersTorram_messageType{}
 
-type fastReflection_MsgIncrementCounterResponse_messageType struct{}
+type fastReflection_ResCheckersTorram_messageType struct{}
 
-func (x fastReflection_MsgIncrementCounterResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounterResponse)(nil)
+func (x fastReflection_ResCheckersTorram_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_ResCheckersTorram)(nil)
 }
-func (x fastReflection_MsgIncrementCounterResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounterResponse)
+func (x fastReflection_ResCheckersTorram_messageType) New() protoreflect.Message {
+	return new(fastReflection_ResCheckersTorram)
 }
-func (x fastReflection_MsgIncrementCounterResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounterResponse
+func (x fastReflection_ResCheckersTorram_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_ResCheckersTorram
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgIncrementCounterResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounterResponse
+func (x *fastReflection_ResCheckersTorram) Descriptor() protoreflect.MessageDescriptor {
+	return md_ResCheckersTorram
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgIncrementCounterResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgIncrementCounterResponse_messageType
+func (x *fastReflection_ResCheckersTorram) Type() protoreflect.MessageType {
+	return _fastReflection_ResCheckersTorram_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgIncrementCounterResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounterResponse)
+func (x *fastReflection_ResCheckersTorram) New() protoreflect.Message {
+	return new(fastReflection_ResCheckersTorram)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgIncrementCounterResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgIncrementCounterResponse)(x)
+func (x *fastReflection_ResCheckersTorram) Interface() protoreflect.ProtoMessage {
+	return (*ResCheckersTorram)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -509,7 +700,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) Interface() protoreflect.Pr
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgIncrementCounterResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_ResCheckersTorram) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 }
 
 // Has reports whether a field is populated.
@@ -523,13 +714,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Range(f func(protoreflect.F
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgIncrementCounterResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_ResCheckersTorram) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ResCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ResCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -539,13 +730,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Has(fd protoreflect.FieldDe
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_ResCheckersTorram) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ResCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ResCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -555,13 +746,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Clear(fd protoreflect.Field
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgIncrementCounterResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ResCheckersTorram) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ResCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounterResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ResCheckersTorram does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -575,13 +766,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Get(descriptor protoreflect
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_ResCheckersTorram) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ResCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ResCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -595,36 +786,36 @@ func (x *fastReflection_MsgIncrementCounterResponse) Set(fd protoreflect.FieldDe
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ResCheckersTorram) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ResCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ResCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgIncrementCounterResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ResCheckersTorram) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ResCheckersTorram"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ResCheckersTorram does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgIncrementCounterResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_ResCheckersTorram) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.MsgIncrementCounterResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.ResCheckersTorram", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -632,7 +823,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) WhichOneof(d protoreflect.O
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgIncrementCounterResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_ResCheckersTorram) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -643,7 +834,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) GetUnknown() protoreflect.R
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_ResCheckersTorram) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -655,7 +846,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) SetUnknown(fields protorefl
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgIncrementCounterResponse) IsValid() bool {
+func (x *fastReflection_ResCheckersTorram) IsValid() bool {
 	return x != nil
 }
 
@@ -665,9 +856,9 @@ func (x *fastReflection_MsgIncrementCounterResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_ResCheckersTorram) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgIncrementCounterResponse)
+		x := input.Message.Interface().(*ResCheckersTorram)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -689,7 +880,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounterResponse)
+		x := input.Message.Interface().(*ResCheckersTorram)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -719,7 +910,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounterResponse)
+		x := input.Message.Interface().(*ResCheckersTorram)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -751,10 +942,10 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounterResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ResCheckersTorram: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounterResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ResCheckersTorram: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			default:
@@ -793,27 +984,27 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 }
 
 var (
-	md_MsgUpdateParams           protoreflect.MessageDescriptor
-	fd_MsgUpdateParams_authority protoreflect.FieldDescriptor
-	fd_MsgUpdateParams_params    protoreflect.FieldDescriptor
+	md_ReqCheckersTorramEnd         protoreflect.MessageDescriptor
+	fd_ReqCheckersTorramEnd_creator protoreflect.FieldDescriptor
+	fd_ReqCheckersTorramEnd_index   protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_alice_checkers_v1_tx_proto_init()
-	md_MsgUpdateParams = File_alice_checkers_v1_tx_proto.Messages().ByName("MsgUpdateParams")
-	fd_MsgUpdateParams_authority = md_MsgUpdateParams.Fields().ByName("authority")
-	fd_MsgUpdateParams_params = md_MsgUpdateParams.Fields().ByName("params")
+	md_ReqCheckersTorramEnd = File_alice_checkers_v1_tx_proto.Messages().ByName("ReqCheckersTorramEnd")
+	fd_ReqCheckersTorramEnd_creator = md_ReqCheckersTorramEnd.Fields().ByName("creator")
+	fd_ReqCheckersTorramEnd_index = md_ReqCheckersTorramEnd.Fields().ByName("index")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgUpdateParams)(nil)
+var _ protoreflect.Message = (*fastReflection_ReqCheckersTorramEnd)(nil)
 
-type fastReflection_MsgUpdateParams MsgUpdateParams
+type fastReflection_ReqCheckersTorramEnd ReqCheckersTorramEnd
 
-func (x *MsgUpdateParams) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgUpdateParams)(x)
+func (x *ReqCheckersTorramEnd) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_ReqCheckersTorramEnd)(x)
 }
 
-func (x *MsgUpdateParams) slowProtoReflect() protoreflect.Message {
+func (x *ReqCheckersTorramEnd) slowProtoReflect() protoreflect.Message {
 	mi := &file_alice_checkers_v1_tx_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -825,43 +1016,43 @@ func (x *MsgUpdateParams) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgUpdateParams_messageType fastReflection_MsgUpdateParams_messageType
-var _ protoreflect.MessageType = fastReflection_MsgUpdateParams_messageType{}
+var _fastReflection_ReqCheckersTorramEnd_messageType fastReflection_ReqCheckersTorramEnd_messageType
+var _ protoreflect.MessageType = fastReflection_ReqCheckersTorramEnd_messageType{}
 
-type fastReflection_MsgUpdateParams_messageType struct{}
+type fastReflection_ReqCheckersTorramEnd_messageType struct{}
 
-func (x fastReflection_MsgUpdateParams_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgUpdateParams)(nil)
+func (x fastReflection_ReqCheckersTorramEnd_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_ReqCheckersTorramEnd)(nil)
 }
-func (x fastReflection_MsgUpdateParams_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgUpdateParams)
+func (x fastReflection_ReqCheckersTorramEnd_messageType) New() protoreflect.Message {
+	return new(fastReflection_ReqCheckersTorramEnd)
 }
-func (x fastReflection_MsgUpdateParams_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUpdateParams
+func (x fastReflection_ReqCheckersTorramEnd_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_ReqCheckersTorramEnd
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgUpdateParams) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUpdateParams
+func (x *fastReflection_ReqCheckersTorramEnd) Descriptor() protoreflect.MessageDescriptor {
+	return md_ReqCheckersTorramEnd
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgUpdateParams) Type() protoreflect.MessageType {
-	return _fastReflection_MsgUpdateParams_messageType
+func (x *fastReflection_ReqCheckersTorramEnd) Type() protoreflect.MessageType {
+	return _fastReflection_ReqCheckersTorramEnd_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgUpdateParams) New() protoreflect.Message {
-	return new(fastReflection_MsgUpdateParams)
+func (x *fastReflection_ReqCheckersTorramEnd) New() protoreflect.Message {
+	return new(fastReflection_ReqCheckersTorramEnd)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgUpdateParams) Interface() protoreflect.ProtoMessage {
-	return (*MsgUpdateParams)(x)
+func (x *fastReflection_ReqCheckersTorramEnd) Interface() protoreflect.ProtoMessage {
+	return (*ReqCheckersTorramEnd)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -869,16 +1060,16 @@ func (x *fastReflection_MsgUpdateParams) Interface() protoreflect.ProtoMessage {
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgUpdateParams) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Authority != "" {
-		value := protoreflect.ValueOfString(x.Authority)
-		if !f(fd_MsgUpdateParams_authority, value) {
+func (x *fastReflection_ReqCheckersTorramEnd) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.Creator != "" {
+		value := protoreflect.ValueOfString(x.Creator)
+		if !f(fd_ReqCheckersTorramEnd_creator, value) {
 			return
 		}
 	}
-	if x.Params != nil {
-		value := protoreflect.ValueOfMessage(x.Params.ProtoReflect())
-		if !f(fd_MsgUpdateParams_params, value) {
+	if x.Index != "" {
+		value := protoreflect.ValueOfString(x.Index)
+		if !f(fd_ReqCheckersTorramEnd_index, value) {
 			return
 		}
 	}
@@ -895,17 +1086,17 @@ func (x *fastReflection_MsgUpdateParams) Range(f func(protoreflect.FieldDescript
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgUpdateParams) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_ReqCheckersTorramEnd) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgUpdateParams.authority":
-		return x.Authority != ""
-	case "alice.checkers.v1.MsgUpdateParams.params":
-		return x.Params != nil
+	case "alice.checkers.v1.ReqCheckersTorramEnd.creator":
+		return x.Creator != ""
+	case "alice.checkers.v1.ReqCheckersTorramEnd.index":
+		return x.Index != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParams"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorramEnd"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParams does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorramEnd does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -915,17 +1106,17 @@ func (x *fastReflection_MsgUpdateParams) Has(fd protoreflect.FieldDescriptor) bo
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParams) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_ReqCheckersTorramEnd) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgUpdateParams.authority":
-		x.Authority = ""
-	case "alice.checkers.v1.MsgUpdateParams.params":
-		x.Params = nil
+	case "alice.checkers.v1.ReqCheckersTorramEnd.creator":
+		x.Creator = ""
+	case "alice.checkers.v1.ReqCheckersTorramEnd.index":
+		x.Index = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParams"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorramEnd"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParams does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorramEnd does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -935,19 +1126,19 @@ func (x *fastReflection_MsgUpdateParams) Clear(fd protoreflect.FieldDescriptor) 
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgUpdateParams) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ReqCheckersTorramEnd) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "alice.checkers.v1.MsgUpdateParams.authority":
-		value := x.Authority
+	case "alice.checkers.v1.ReqCheckersTorramEnd.creator":
+		value := x.Creator
 		return protoreflect.ValueOfString(value)
-	case "alice.checkers.v1.MsgUpdateParams.params":
-		value := x.Params
-		return protoreflect.ValueOfMessage(value.ProtoReflect())
+	case "alice.checkers.v1.ReqCheckersTorramEnd.index":
+		value := x.Index
+		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParams"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorramEnd"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParams does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorramEnd does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -961,17 +1152,17 @@ func (x *fastReflection_MsgUpdateParams) Get(descriptor protoreflect.FieldDescri
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParams) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_ReqCheckersTorramEnd) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgUpdateParams.authority":
-		x.Authority = value.Interface().(string)
-	case "alice.checkers.v1.MsgUpdateParams.params":
-		x.Params = value.Message().Interface().(*Params)
+	case "alice.checkers.v1.ReqCheckersTorramEnd.creator":
+		x.Creator = value.Interface().(string)
+	case "alice.checkers.v1.ReqCheckersTorramEnd.index":
+		x.Index = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParams"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorramEnd"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParams does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorramEnd does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -985,48 +1176,44 @@ func (x *fastReflection_MsgUpdateParams) Set(fd protoreflect.FieldDescriptor, va
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParams) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ReqCheckersTorramEnd) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgUpdateParams.params":
-		if x.Params == nil {
-			x.Params = new(Params)
-		}
-		return protoreflect.ValueOfMessage(x.Params.ProtoReflect())
-	case "alice.checkers.v1.MsgUpdateParams.authority":
-		panic(fmt.Errorf("field authority of message alice.checkers.v1.MsgUpdateParams is not mutable"))
+	case "alice.checkers.v1.ReqCheckersTorramEnd.creator":
+		panic(fmt.Errorf("field creator of message alice.checkers.v1.ReqCheckersTorramEnd is not mutable"))
+	case "alice.checkers.v1.ReqCheckersTorramEnd.index":
+		panic(fmt.Errorf("field index of message alice.checkers.v1.ReqCheckersTorramEnd is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParams"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorramEnd"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParams does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorramEnd does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgUpdateParams) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_ReqCheckersTorramEnd) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "alice.checkers.v1.MsgUpdateParams.authority":
+	case "alice.checkers.v1.ReqCheckersTorramEnd.creator":
 		return protoreflect.ValueOfString("")
-	case "alice.checkers.v1.MsgUpdateParams.params":
-		m := new(Params)
-		return protoreflect.ValueOfMessage(m.ProtoReflect())
+	case "alice.checkers.v1.ReqCheckersTorramEnd.index":
+		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParams"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.ReqCheckersTorramEnd"))
 		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParams does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message alice.checkers.v1.ReqCheckersTorramEnd does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgUpdateParams) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_ReqCheckersTorramEnd) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.MsgUpdateParams", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.ReqCheckersTorramEnd", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -1034,7 +1221,7 @@ func (x *fastReflection_MsgUpdateParams) WhichOneof(d protoreflect.OneofDescript
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgUpdateParams) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_ReqCheckersTorramEnd) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -1045,7 +1232,7 @@ func (x *fastReflection_MsgUpdateParams) GetUnknown() protoreflect.RawFields {
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParams) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_ReqCheckersTorramEnd) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -1057,7 +1244,7 @@ func (x *fastReflection_MsgUpdateParams) SetUnknown(fields protoreflect.RawField
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgUpdateParams) IsValid() bool {
+func (x *fastReflection_ReqCheckersTorramEnd) IsValid() bool {
 	return x != nil
 }
 
@@ -1067,9 +1254,9 @@ func (x *fastReflection_MsgUpdateParams) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_ReqCheckersTorramEnd) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgUpdateParams)
+		x := input.Message.Interface().(*ReqCheckersTorramEnd)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1081,12 +1268,12 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 		var n int
 		var l int
 		_ = l
-		l = len(x.Authority)
+		l = len(x.Creator)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
-		if x.Params != nil {
-			l = options.Size(x.Params)
+		l = len(x.Index)
+		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
 		if x.unknownFields != nil {
@@ -1099,7 +1286,7 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUpdateParams)
+		x := input.Message.Interface().(*ReqCheckersTorramEnd)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1118,24 +1305,17 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if x.Params != nil {
-			encoded, err := options.Marshal(x.Params)
-			if err != nil {
-				return protoiface.MarshalOutput{
-					NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-					Buf:               input.Buf,
-				}, err
-			}
-			i -= len(encoded)
-			copy(dAtA[i:], encoded)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(encoded)))
+		if len(x.Index) > 0 {
+			i -= len(x.Index)
+			copy(dAtA[i:], x.Index)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Index)))
 			i--
 			dAtA[i] = 0x12
 		}
-		if len(x.Authority) > 0 {
-			i -= len(x.Authority)
-			copy(dAtA[i:], x.Authority)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Authority)))
+		if len(x.Creator) > 0 {
+			i -= len(x.Creator)
+			copy(dAtA[i:], x.Creator)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Creator)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -1150,7 +1330,7 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUpdateParams)
+		x := input.Message.Interface().(*ReqCheckersTorramEnd)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -1182,15 +1362,15 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateParams: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ReqCheckersTorramEnd: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateParams: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: ReqCheckersTorramEnd: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Authority", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -1218,13 +1398,13 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Authority = string(dAtA[iNdEx:postIndex])
+				x.Creator = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			case 2:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Params", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
 				}
-				var msglen int
+				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -1234,384 +1414,24 @@ func (x *fastReflection_MsgUpdateParams) ProtoMethods() *protoiface.Methods {
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					msglen |= int(b&0x7F) << shift
+					stringLen |= uint64(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
-				if msglen < 0 {
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
-				postIndex := iNdEx + msglen
+				postIndex := iNdEx + intStringLen
 				if postIndex < 0 {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
 				}
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				if x.Params == nil {
-					x.Params = &Params{}
-				}
-				if err := options.Unmarshal(dAtA[iNdEx:postIndex], x.Params); err != nil {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
-				}
+				x.Index = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
-			default:
-				iNdEx = preIndex
-				skippy, err := runtime.Skip(dAtA[iNdEx:])
-				if err != nil {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, err
-				}
-				if (skippy < 0) || (iNdEx+skippy) < 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
-				}
-				if (iNdEx + skippy) > l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				if !options.DiscardUnknown {
-					x.unknownFields = append(x.unknownFields, dAtA[iNdEx:iNdEx+skippy]...)
-				}
-				iNdEx += skippy
-			}
-		}
-
-		if iNdEx > l {
-			return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-		}
-		return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, nil
-	}
-	return &protoiface.Methods{
-		NoUnkeyedLiterals: struct{}{},
-		Flags:             protoiface.SupportMarshalDeterministic | protoiface.SupportUnmarshalDiscardUnknown,
-		Size:              size,
-		Marshal:           marshal,
-		Unmarshal:         unmarshal,
-		Merge:             nil,
-		CheckInitialized:  nil,
-	}
-}
-
-var (
-	md_MsgUpdateParamsResponse protoreflect.MessageDescriptor
-)
-
-func init() {
-	file_alice_checkers_v1_tx_proto_init()
-	md_MsgUpdateParamsResponse = File_alice_checkers_v1_tx_proto.Messages().ByName("MsgUpdateParamsResponse")
-}
-
-var _ protoreflect.Message = (*fastReflection_MsgUpdateParamsResponse)(nil)
-
-type fastReflection_MsgUpdateParamsResponse MsgUpdateParamsResponse
-
-func (x *MsgUpdateParamsResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgUpdateParamsResponse)(x)
-}
-
-func (x *MsgUpdateParamsResponse) slowProtoReflect() protoreflect.Message {
-	mi := &file_alice_checkers_v1_tx_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-var _fastReflection_MsgUpdateParamsResponse_messageType fastReflection_MsgUpdateParamsResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgUpdateParamsResponse_messageType{}
-
-type fastReflection_MsgUpdateParamsResponse_messageType struct{}
-
-func (x fastReflection_MsgUpdateParamsResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgUpdateParamsResponse)(nil)
-}
-func (x fastReflection_MsgUpdateParamsResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgUpdateParamsResponse)
-}
-func (x fastReflection_MsgUpdateParamsResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUpdateParamsResponse
-}
-
-// Descriptor returns message descriptor, which contains only the protobuf
-// type information for the message.
-func (x *fastReflection_MsgUpdateParamsResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgUpdateParamsResponse
-}
-
-// Type returns the message type, which encapsulates both Go and protobuf
-// type information. If the Go type information is not needed,
-// it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgUpdateParamsResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgUpdateParamsResponse_messageType
-}
-
-// New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgUpdateParamsResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgUpdateParamsResponse)
-}
-
-// Interface unwraps the message reflection interface and
-// returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgUpdateParamsResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgUpdateParamsResponse)(x)
-}
-
-// Range iterates over every populated field in an undefined order,
-// calling f for each field descriptor and value encountered.
-// Range returns immediately if f returns false.
-// While iterating, mutating operations may only be performed
-// on the current field descriptor.
-func (x *fastReflection_MsgUpdateParamsResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-}
-
-// Has reports whether a field is populated.
-//
-// Some fields have the property of nullability where it is possible to
-// distinguish between the default value of a field and whether the field
-// was explicitly populated with the default value. Singular message fields,
-// member fields of a oneof, and proto2 scalar fields are nullable. Such
-// fields are populated only if explicitly set.
-//
-// In other cases (aside from the nullable cases above),
-// a proto3 scalar field is populated if it contains a non-zero value, and
-// a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgUpdateParamsResponse) Has(fd protoreflect.FieldDescriptor) bool {
-	switch fd.FullName() {
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParamsResponse"))
-		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParamsResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Clear clears the field such that a subsequent Has call reports false.
-//
-// Clearing an extension field clears both the extension type and value
-// associated with the given field number.
-//
-// Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParamsResponse) Clear(fd protoreflect.FieldDescriptor) {
-	switch fd.FullName() {
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParamsResponse"))
-		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParamsResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Get retrieves the value for a field.
-//
-// For unpopulated scalars, it returns the default value, where
-// the default value of a bytes scalar is guaranteed to be a copy.
-// For unpopulated composite types, it returns an empty, read-only view
-// of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgUpdateParamsResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
-	switch descriptor.FullName() {
-	default:
-		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParamsResponse"))
-		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParamsResponse does not contain field %s", descriptor.FullName()))
-	}
-}
-
-// Set stores the value for a field.
-//
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType.
-// When setting a composite type, it is unspecified whether the stored value
-// aliases the source's memory in any way. If the composite value is an
-// empty, read-only value, then it panics.
-//
-// Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParamsResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
-	switch fd.FullName() {
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParamsResponse"))
-		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParamsResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// Mutable returns a mutable reference to a composite type.
-//
-// If the field is unpopulated, it may allocate a composite value.
-// For a field belonging to a oneof, it implicitly clears any other field
-// that may be currently set within the same oneof.
-// For extension fields, it implicitly stores the provided ExtensionType
-// if not already stored.
-// It panics if the field does not contain a composite type.
-//
-// Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParamsResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParamsResponse"))
-		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParamsResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// NewField returns a new value that is assignable to the field
-// for the given descriptor. For scalars, this returns the default value.
-// For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgUpdateParamsResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
-	switch fd.FullName() {
-	default:
-		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: alice.checkers.v1.MsgUpdateParamsResponse"))
-		}
-		panic(fmt.Errorf("message alice.checkers.v1.MsgUpdateParamsResponse does not contain field %s", fd.FullName()))
-	}
-}
-
-// WhichOneof reports which field within the oneof is populated,
-// returning nil if none are populated.
-// It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgUpdateParamsResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
-	switch d.FullName() {
-	default:
-		panic(fmt.Errorf("%s is not a oneof field in alice.checkers.v1.MsgUpdateParamsResponse", d.FullName()))
-	}
-	panic("unreachable")
-}
-
-// GetUnknown retrieves the entire list of unknown fields.
-// The caller may only mutate the contents of the RawFields
-// if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgUpdateParamsResponse) GetUnknown() protoreflect.RawFields {
-	return x.unknownFields
-}
-
-// SetUnknown stores an entire list of unknown fields.
-// The raw fields must be syntactically valid according to the wire format.
-// An implementation may panic if this is not the case.
-// Once stored, the caller must not mutate the content of the RawFields.
-// An empty RawFields may be passed to clear the fields.
-//
-// SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgUpdateParamsResponse) SetUnknown(fields protoreflect.RawFields) {
-	x.unknownFields = fields
-}
-
-// IsValid reports whether the message is valid.
-//
-// An invalid message is an empty, read-only value.
-//
-// An invalid message often corresponds to a nil pointer of the concrete
-// message type, but the details are implementation dependent.
-// Validity is not part of the protobuf data model, and may not
-// be preserved in marshaling or other operations.
-func (x *fastReflection_MsgUpdateParamsResponse) IsValid() bool {
-	return x != nil
-}
-
-// ProtoMethods returns optional fastReflectionFeature-path implementations of various operations.
-// This method may return nil.
-//
-// The returned methods type is identical to
-// "google.golang.org/protobuf/runtime/protoiface".Methods.
-// Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgUpdateParamsResponse) ProtoMethods() *protoiface.Methods {
-	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgUpdateParamsResponse)
-		if x == nil {
-			return protoiface.SizeOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Size:              0,
-			}
-		}
-		options := runtime.SizeInputToOptions(input)
-		_ = options
-		var n int
-		var l int
-		_ = l
-		if x.unknownFields != nil {
-			n += len(x.unknownFields)
-		}
-		return protoiface.SizeOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Size:              n,
-		}
-	}
-
-	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUpdateParamsResponse)
-		if x == nil {
-			return protoiface.MarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Buf:               input.Buf,
-			}, nil
-		}
-		options := runtime.MarshalInputToOptions(input)
-		_ = options
-		size := options.Size(x)
-		dAtA := make([]byte, size)
-		i := len(dAtA)
-		_ = i
-		var l int
-		_ = l
-		if x.unknownFields != nil {
-			i -= len(x.unknownFields)
-			copy(dAtA[i:], x.unknownFields)
-		}
-		if input.Buf != nil {
-			input.Buf = append(input.Buf, dAtA...)
-		} else {
-			input.Buf = dAtA
-		}
-		return protoiface.MarshalOutput{
-			NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-			Buf:               input.Buf,
-		}, nil
-	}
-	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgUpdateParamsResponse)
-		if x == nil {
-			return protoiface.UnmarshalOutput{
-				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
-				Flags:             input.Flags,
-			}, nil
-		}
-		options := runtime.UnmarshalInputToOptions(input)
-		_ = options
-		dAtA := input.Buf
-		l := len(dAtA)
-		iNdEx := 0
-		for iNdEx < l {
-			preIndex := iNdEx
-			var wire uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
-				}
-				if iNdEx >= l {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				wire |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			fieldNum := int32(wire >> 3)
-			wireType := int(wire & 0x7)
-			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateParamsResponse: wiretype end group for non-group")
-			}
-			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgUpdateParamsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
-			}
-			switch fieldNum {
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -1660,18 +1480,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MsgIncrementCounter defines the Msg/IncrementCounter request type.
-type MsgIncrementCounter struct {
+// ReqCheckersTorram defines the CheckersTorram/CheckersCreateGm request type.
+type ReqCheckersTorram struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// sender is the message sender.
-	Sender string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+	// creator is the message sender.
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+	Black   string `protobuf:"bytes,3,opt,name=black,proto3" json:"black,omitempty"`
+	Red     string `protobuf:"bytes,4,opt,name=red,proto3" json:"red,omitempty"`
 }
 
-func (x *MsgIncrementCounter) Reset() {
-	*x = MsgIncrementCounter{}
+func (x *ReqCheckersTorram) Reset() {
+	*x = ReqCheckersTorram{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_alice_checkers_v1_tx_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1679,33 +1502,54 @@ func (x *MsgIncrementCounter) Reset() {
 	}
 }
 
-func (x *MsgIncrementCounter) String() string {
+func (x *ReqCheckersTorram) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgIncrementCounter) ProtoMessage() {}
+func (*ReqCheckersTorram) ProtoMessage() {}
 
-// Deprecated: Use MsgIncrementCounter.ProtoReflect.Descriptor instead.
-func (*MsgIncrementCounter) Descriptor() ([]byte, []int) {
+// Deprecated: Use ReqCheckersTorram.ProtoReflect.Descriptor instead.
+func (*ReqCheckersTorram) Descriptor() ([]byte, []int) {
 	return file_alice_checkers_v1_tx_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MsgIncrementCounter) GetSender() string {
+func (x *ReqCheckersTorram) GetCreator() string {
 	if x != nil {
-		return x.Sender
+		return x.Creator
 	}
 	return ""
 }
 
-// MsgIncrementCounterResponse defines the Msg/IncrementCounter response type.
-type MsgIncrementCounterResponse struct {
+func (x *ReqCheckersTorram) GetIndex() string {
+	if x != nil {
+		return x.Index
+	}
+	return ""
+}
+
+func (x *ReqCheckersTorram) GetBlack() string {
+	if x != nil {
+		return x.Black
+	}
+	return ""
+}
+
+func (x *ReqCheckersTorram) GetRed() string {
+	if x != nil {
+		return x.Red
+	}
+	return ""
+}
+
+// ResCheckersTorram defines the CheckersTorram/CheckersCreateGm response type.
+type ResCheckersTorram struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *MsgIncrementCounterResponse) Reset() {
-	*x = MsgIncrementCounterResponse{}
+func (x *ResCheckersTorram) Reset() {
+	*x = ResCheckersTorram{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_alice_checkers_v1_tx_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1713,33 +1557,30 @@ func (x *MsgIncrementCounterResponse) Reset() {
 	}
 }
 
-func (x *MsgIncrementCounterResponse) String() string {
+func (x *ResCheckersTorram) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgIncrementCounterResponse) ProtoMessage() {}
+func (*ResCheckersTorram) ProtoMessage() {}
 
-// Deprecated: Use MsgIncrementCounterResponse.ProtoReflect.Descriptor instead.
-func (*MsgIncrementCounterResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use ResCheckersTorram.ProtoReflect.Descriptor instead.
+func (*ResCheckersTorram) Descriptor() ([]byte, []int) {
 	return file_alice_checkers_v1_tx_proto_rawDescGZIP(), []int{1}
 }
 
-// MsgUpdateParams is the Msg/UpdateParams request type.
-type MsgUpdateParams struct {
+// ReqCheckersTorramEnd defines the CheckersTorram/CheckersEndGm request type.
+type ReqCheckersTorramEnd struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// authority is the address that controls the module
-	// NOTE: Defaults to the governance module unless overwritten.
-	Authority string `protobuf:"bytes,1,opt,name=authority,proto3" json:"authority,omitempty"`
-	// params defines the module parameters to update.
-	// NOTE: All parameters must be supplied.
-	Params *Params `protobuf:"bytes,2,opt,name=params,proto3" json:"params,omitempty"`
+	// creator is the message sender.
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
 }
 
-func (x *MsgUpdateParams) Reset() {
-	*x = MsgUpdateParams{}
+func (x *ReqCheckersTorramEnd) Reset() {
+	*x = ReqCheckersTorramEnd{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_alice_checkers_v1_tx_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1747,57 +1588,29 @@ func (x *MsgUpdateParams) Reset() {
 	}
 }
 
-func (x *MsgUpdateParams) String() string {
+func (x *ReqCheckersTorramEnd) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgUpdateParams) ProtoMessage() {}
+func (*ReqCheckersTorramEnd) ProtoMessage() {}
 
-// Deprecated: Use MsgUpdateParams.ProtoReflect.Descriptor instead.
-func (*MsgUpdateParams) Descriptor() ([]byte, []int) {
+// Deprecated: Use ReqCheckersTorramEnd.ProtoReflect.Descriptor instead.
+func (*ReqCheckersTorramEnd) Descriptor() ([]byte, []int) {
 	return file_alice_checkers_v1_tx_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MsgUpdateParams) GetAuthority() string {
+func (x *ReqCheckersTorramEnd) GetCreator() string {
 	if x != nil {
-		return x.Authority
+		return x.Creator
 	}
 	return ""
 }
 
-func (x *MsgUpdateParams) GetParams() *Params {
+func (x *ReqCheckersTorramEnd) GetIndex() string {
 	if x != nil {
-		return x.Params
+		return x.Index
 	}
-	return nil
-}
-
-// MsgUpdateParamsResponse defines the response structure for executing a
-// MsgUpdateParams message.
-type MsgUpdateParamsResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-}
-
-func (x *MsgUpdateParamsResponse) Reset() {
-	*x = MsgUpdateParamsResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_alice_checkers_v1_tx_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MsgUpdateParamsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MsgUpdateParamsResponse) ProtoMessage() {}
-
-// Deprecated: Use MsgUpdateParamsResponse.ProtoReflect.Descriptor instead.
-func (*MsgUpdateParamsResponse) Descriptor() ([]byte, []int) {
-	return file_alice_checkers_v1_tx_proto_rawDescGZIP(), []int{3}
+	return ""
 }
 
 var File_alice_checkers_v1_tx_proto protoreflect.FileDescriptor
@@ -1808,62 +1621,55 @@ var file_alice_checkers_v1_tx_proto_rawDesc = []byte{
 	0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x1a,
 	0x17, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2f, 0x6d, 0x73, 0x67, 0x2f, 0x76, 0x31, 0x2f, 0x6d,
 	0x73, 0x67, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f, 0x70, 0x72,
-	0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x11,
-	0x61, 0x6d, 0x69, 0x6e, 0x6f, 0x2f, 0x61, 0x6d, 0x69, 0x6e, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x1a, 0x1d, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72,
-	0x73, 0x2f, 0x76, 0x31, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x1a, 0x19, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63,
-	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x7b, 0x0a, 0x13, 0x4d,
-	0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74,
-	0x65, 0x72, 0x12, 0x30, 0x0a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41,
-	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x06, 0x73, 0x65,
-	0x6e, 0x64, 0x65, 0x72, 0x3a, 0x32, 0x82, 0xe7, 0xb0, 0x2a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65,
-	0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x22, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63,
-	0x6b, 0x65, 0x72, 0x73, 0x2f, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e,
-	0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x22, 0x1d, 0x0a, 0x1b, 0x4d, 0x73, 0x67, 0x49,
-	0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xba, 0x01, 0x0a, 0x0f, 0x4d, 0x73, 0x67, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x36, 0x0a, 0x09, 0x61,
-	0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18,
-	0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65,
-	0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72,
-	0x69, 0x74, 0x79, 0x12, 0x3c, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63,
-	0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09,
-	0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d,
-	0x73, 0x3a, 0x31, 0x82, 0xe7, 0xb0, 0x2a, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74,
-	0x79, 0x8a, 0xe7, 0xb0, 0x2a, 0x1e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63,
-	0x6b, 0x65, 0x72, 0x73, 0x2f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61,
-	0x72, 0x61, 0x6d, 0x73, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32,
-	0xd8, 0x01, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x6a, 0x0a, 0x10, 0x49, 0x6e, 0x63, 0x72, 0x65,
-	0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x12, 0x26, 0x2e, 0x61, 0x6c,
-	0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e,
-	0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e,
-	0x74, 0x65, 0x72, 0x1a, 0x2e, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63,
-	0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65,
-	0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x5e, 0x0a, 0x0c, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72,
-	0x61, 0x6d, 0x73, 0x12, 0x22, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63,
-	0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x1a, 0x2a, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e,
-	0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0xc2, 0x01, 0x0a, 0x15, 0x63,
-	0x6f, 0x6d, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72,
-	0x73, 0x2e, 0x76, 0x31, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a,
-	0x3a, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6c, 0x69, 0x63,
-	0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61,
-	0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2f, 0x76, 0x31,
-	0x3b, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x41, 0x43,
-	0x58, 0xaa, 0x02, 0x11, 0x41, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65,
-	0x72, 0x73, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x11, 0x41, 0x6c, 0x69, 0x63, 0x65, 0x5c, 0x43, 0x68,
-	0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1d, 0x41, 0x6c, 0x69, 0x63,
-	0x65, 0x5c, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50,
-	0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x13, 0x41, 0x6c, 0x69, 0x63,
-	0x65, 0x3a, 0x3a, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x3a, 0x3a, 0x56, 0x31, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x67, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1d,
+	0x61, 0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2f, 0x76,
+	0x31, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19, 0x63,
+	0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x63, 0x6f, 0x73, 0x6d,
+	0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xad, 0x01, 0x0a, 0x11, 0x52, 0x65, 0x71,
+	0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d, 0x12, 0x18,
+	0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12, 0x14, 0x0a, 0x05, 0x69, 0x6e, 0x64, 0x65,
+	0x78, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x12, 0x2e,
+	0x0a, 0x05, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2,
+	0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73,
+	0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x05, 0x62, 0x6c, 0x61, 0x63, 0x6b, 0x12, 0x2a,
+	0x0a, 0x03, 0x72, 0x65, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d,
+	0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53,
+	0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x03, 0x72, 0x65, 0x64, 0x3a, 0x0c, 0x82, 0xe7, 0xb0, 0x2a,
+	0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x22, 0x13, 0x0a, 0x11, 0x52, 0x65, 0x73, 0x43,
+	0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d, 0x22, 0x54, 0x0a,
+	0x14, 0x52, 0x65, 0x71, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x54, 0x6f, 0x72, 0x72,
+	0x61, 0x6d, 0x45, 0x6e, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x12,
+	0x14, 0x0a, 0x05, 0x69, 0x6e, 0x64, 0x65, 0x78, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
+	0x69, 0x6e, 0x64, 0x65, 0x78, 0x3a, 0x0c, 0x82, 0xe7, 0xb0, 0x2a, 0x07, 0x63, 0x72, 0x65, 0x61,
+	0x74, 0x6f, 0x72, 0x32, 0xd7, 0x01, 0x0a, 0x0e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73,
+	0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d, 0x12, 0x5e, 0x0a, 0x10, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65,
+	0x72, 0x73, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x47, 0x6d, 0x12, 0x24, 0x2e, 0x61, 0x6c, 0x69,
+	0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x52,
+	0x65, 0x71, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d,
+	0x1a, 0x24, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72,
+	0x73, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x73, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73,
+	0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d, 0x12, 0x5e, 0x0a, 0x0d, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65,
+	0x72, 0x73, 0x45, 0x6e, 0x64, 0x47, 0x6d, 0x12, 0x27, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e,
+	0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x71, 0x43,
+	0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d, 0x45, 0x6e, 0x64,
+	0x1a, 0x24, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72,
+	0x73, 0x2e, 0x76, 0x31, 0x2e, 0x52, 0x65, 0x73, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73,
+	0x54, 0x6f, 0x72, 0x72, 0x61, 0x6d, 0x1a, 0x05, 0x80, 0xe7, 0xb0, 0x2a, 0x01, 0x42, 0xc2, 0x01,
+	0x0a, 0x15, 0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x63, 0x68, 0x65, 0x63,
+	0x6b, 0x65, 0x72, 0x73, 0x2e, 0x76, 0x31, 0x42, 0x07, 0x54, 0x78, 0x50, 0x72, 0x6f, 0x74, 0x6f,
+	0x50, 0x01, 0x5a, 0x3a, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61,
+	0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x2f, 0x61, 0x70,
+	0x69, 0x2f, 0x61, 0x6c, 0x69, 0x63, 0x65, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73,
+	0x2f, 0x76, 0x31, 0x3b, 0x63, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x76, 0x31, 0xa2, 0x02,
+	0x03, 0x41, 0x43, 0x58, 0xaa, 0x02, 0x11, 0x41, 0x6c, 0x69, 0x63, 0x65, 0x2e, 0x43, 0x68, 0x65,
+	0x63, 0x6b, 0x65, 0x72, 0x73, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x11, 0x41, 0x6c, 0x69, 0x63, 0x65,
+	0x5c, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x1d, 0x41,
+	0x6c, 0x69, 0x63, 0x65, 0x5c, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x5c, 0x56, 0x31,
+	0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x13, 0x41,
+	0x6c, 0x69, 0x63, 0x65, 0x3a, 0x3a, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x72, 0x73, 0x3a, 0x3a,
+	0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1878,25 +1684,22 @@ func file_alice_checkers_v1_tx_proto_rawDescGZIP() []byte {
 	return file_alice_checkers_v1_tx_proto_rawDescData
 }
 
-var file_alice_checkers_v1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_alice_checkers_v1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_alice_checkers_v1_tx_proto_goTypes = []interface{}{
-	(*MsgIncrementCounter)(nil),         // 0: alice.checkers.v1.MsgIncrementCounter
-	(*MsgIncrementCounterResponse)(nil), // 1: alice.checkers.v1.MsgIncrementCounterResponse
-	(*MsgUpdateParams)(nil),             // 2: alice.checkers.v1.MsgUpdateParams
-	(*MsgUpdateParamsResponse)(nil),     // 3: alice.checkers.v1.MsgUpdateParamsResponse
-	(*Params)(nil),                      // 4: alice.checkers.v1.Params
+	(*ReqCheckersTorram)(nil),    // 0: alice.checkers.v1.ReqCheckersTorram
+	(*ResCheckersTorram)(nil),    // 1: alice.checkers.v1.ResCheckersTorram
+	(*ReqCheckersTorramEnd)(nil), // 2: alice.checkers.v1.ReqCheckersTorramEnd
 }
 var file_alice_checkers_v1_tx_proto_depIdxs = []int32{
-	4, // 0: alice.checkers.v1.MsgUpdateParams.params:type_name -> alice.checkers.v1.Params
-	0, // 1: alice.checkers.v1.Msg.IncrementCounter:input_type -> alice.checkers.v1.MsgIncrementCounter
-	2, // 2: alice.checkers.v1.Msg.UpdateParams:input_type -> alice.checkers.v1.MsgUpdateParams
-	1, // 3: alice.checkers.v1.Msg.IncrementCounter:output_type -> alice.checkers.v1.MsgIncrementCounterResponse
-	3, // 4: alice.checkers.v1.Msg.UpdateParams:output_type -> alice.checkers.v1.MsgUpdateParamsResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0, // 0: alice.checkers.v1.CheckersTorram.CheckersCreateGm:input_type -> alice.checkers.v1.ReqCheckersTorram
+	2, // 1: alice.checkers.v1.CheckersTorram.CheckersEndGm:input_type -> alice.checkers.v1.ReqCheckersTorramEnd
+	1, // 2: alice.checkers.v1.CheckersTorram.CheckersCreateGm:output_type -> alice.checkers.v1.ResCheckersTorram
+	1, // 3: alice.checkers.v1.CheckersTorram.CheckersEndGm:output_type -> alice.checkers.v1.ResCheckersTorram
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_alice_checkers_v1_tx_proto_init() }
@@ -1907,7 +1710,7 @@ func file_alice_checkers_v1_tx_proto_init() {
 	file_alice_checkers_v1_types_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_alice_checkers_v1_tx_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgIncrementCounter); i {
+			switch v := v.(*ReqCheckersTorram); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1919,7 +1722,7 @@ func file_alice_checkers_v1_tx_proto_init() {
 			}
 		}
 		file_alice_checkers_v1_tx_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgIncrementCounterResponse); i {
+			switch v := v.(*ResCheckersTorram); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1931,19 +1734,7 @@ func file_alice_checkers_v1_tx_proto_init() {
 			}
 		}
 		file_alice_checkers_v1_tx_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUpdateParams); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_alice_checkers_v1_tx_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgUpdateParamsResponse); i {
+			switch v := v.(*ReqCheckersTorramEnd); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1961,7 +1752,7 @@ func file_alice_checkers_v1_tx_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_alice_checkers_v1_tx_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

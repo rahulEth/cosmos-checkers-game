@@ -12,35 +12,34 @@ func (am AppModule) AutoCLIOptions() *autocliv1.ModuleOptions {
 			Service: checkersv1.Query_ServiceDesc.ServiceName,
 			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
 				{
-					RpcMethod: "GetGame",
-					Use:       "get-game index",
-					Short:     "Get the current value of the game at index",
+					RpcMethod: "Counter",
+					Use:       "counter [address]",
+					Short:     "Get the current value of the counter for an address",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "index"},
+						{ProtoField: "address"},
 					},
+				},
+				{
+					RpcMethod: "Params",
+					Use:       "params",
+					Short:     "Get the current module parameters",
 				},
 			},
 		},
 		Tx: &autocliv1.ServiceCommandDescriptor{
-			Service: checkersv1.CheckersTorram_ServiceDesc.ServiceName,
+			Service: checkersv1.Msg_ServiceDesc.ServiceName,
 			RpcCommandOptions: []*autocliv1.RpcCommandOptions{
 				{
-					RpcMethod: "CheckersCreateGm",
-					Use:       "create index black red",
-					Short:     "Creates a new checkers game at the index for the black and red players",
+					RpcMethod: "IncrementCounter",
+					Use:       "counter [sender]",
+					Short:     "Increments the counter by 1 for the sender",
 					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "index"},
-						{ProtoField: "black"},
-						{ProtoField: "red"},
+						{ProtoField: "sender"},
 					},
 				},
 				{
-					RpcMethod: "CheckersEndGm",
-					Use:       "end index",
-					Short:     "End a ongoing game at the index",
-					PositionalArgs: []*autocliv1.PositionalArgDescriptor{
-						{ProtoField: "index"},
-					},
+					RpcMethod: "UpdateParams",
+					Skip:      true, // This is a authority gated tx, so we skip it.
 				},
 			},
 		},

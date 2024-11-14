@@ -18,7 +18,7 @@ import (
 type testFixture struct {
 	ctx         sdk.Context
 	k           keeper.Keeper
-	msgServer   checkers.CheckersTorramServer
+	msgServer   checkers.MsgServer
 	queryServer checkers.QueryServer
 
 	addrs []sdk.AccAddress

@@ -20,9 +20,11 @@ type Keeper struct {
 	authority string
 
 	// state management
-	Schema      collections.Schema
-	Params      collections.Item[checkers.Params]
-	StoredGames collections.Map[string, checkers.StoredGame]
+	Schema  collections.Schema
+	Params  collections.Item[checkers.Params]
+	Counter collections.Map[string, uint64]
+   
+    StoredGames collections.Map[string, checkers.StoredGame]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -37,8 +39,9 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		addressCodec: addressCodec,
 		authority:    authority,
 		Params:       collections.NewItem(sb, checkers.ParamsKey, "params", codec.CollValue[checkers.Params](cdc)),
-		StoredGames: collections.NewMap(sb,
-			checkers.StoredGamesKey, "storedGames", collections.StringKey,
+		Counter:      collections.NewMap(sb, checkers.CounterKey, "counter", collections.StringKey, collections.Uint64Value),
+		StoredGames: collections.NewMap(sb,     
+		    checkers.StoredGamesKey, "storedGames", collections.StringKey,
 			codec.CollValue[checkers.StoredGame](cdc)),
 	}
 

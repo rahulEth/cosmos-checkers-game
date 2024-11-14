@@ -4,8 +4,8 @@ import (
     fmt "fmt"
 
     "cosmossdk.io/errors"
-    "github.com/alice/checkers/rules"
     sdk "github.com/cosmos/cosmos-sdk/types"
+    "github.com/alice/checkers/rules"
 )
 
 func (storedGame StoredGame) GetBlackAddress() (black sdk.AccAddress, err error) {
